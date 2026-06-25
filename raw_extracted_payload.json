@@ -1,0 +1,249 @@
+{
+    "profile": {
+        "username": "akshat-gupta-88b129325"
+    },
+    "network": {
+        "followers": 711,
+        "connections": 500
+    },
+    "optimization": {
+        "has_about_section": true,
+        "has_banner_image": true,
+        "has_featured_section": true,
+        "has_custom_url": false,
+        "has_education": true
+    },
+    "recent_posts": [
+        {
+            "timestamp_text": "1w",
+            "likes": 80,
+            "comments": 2,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "3w",
+            "likes": 42,
+            "comments": 8,
+            "reposts": 2
+        },
+        {
+            "timestamp_text": "3w",
+            "likes": 56,
+            "comments": 3,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "3w",
+            "likes": 159,
+            "comments": 6,
+            "reposts": 3
+        },
+        {
+            "timestamp_text": "1mo",
+            "likes": 57,
+            "comments": 14,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "4mo",
+            "likes": 205,
+            "comments": 12,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "4mo",
+            "likes": 79,
+            "comments": 2,
+            "reposts": 6
+        },
+        {
+            "timestamp_text": "4mo",
+            "likes": 130,
+            "comments": 17,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "5mo",
+            "likes": 63,
+            "comments": 0,
+            "reposts": 10
+        },
+        {
+            "timestamp_text": "5mo",
+            "likes": 77,
+            "comments": 0,
+            "reposts": 12
+        },
+        {
+            "timestamp_text": "5mo",
+            "likes": 229,
+            "comments": 15,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "6mo",
+            "likes": 65,
+            "comments": 13,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "9mo",
+            "likes": 49,
+            "comments": 0,
+            "reposts": 7
+        },
+        {
+            "timestamp_text": "9mo",
+            "likes": 95,
+            "comments": 2,
+            "reposts": 11
+        },
+        {
+            "timestamp_text": "10mo",
+            "likes": 43,
+            "comments": 7,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "10mo",
+            "likes": 44,
+            "comments": 9,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "10mo",
+            "likes": 48,
+            "comments": 7,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "10mo",
+            "likes": 56,
+            "comments": 14,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 60,
+            "comments": 8,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 32,
+            "comments": 8,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 22,
+            "comments": 2,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 31,
+            "comments": 13,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 20,
+            "comments": 3,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 21,
+            "comments": 1,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 21,
+            "comments": 4,
+            "reposts": 0
+        },
+        {
+            "timestamp_text": "1yr",
+            "likes": 26,
+            "comments": 8,
+            "reposts": 0
+        }
+    ],
+    "skills": {
+        "Embedded Devices": 0,
+        "Network Design": 0,
+        "Network Security": 0,
+        "Environmental Awareness": 0,
+        "Environmental Impact Assessment": 0,
+        "Quality, Health, Safety, and Environment (QHSE)": 0,
+        "Streamlit": 0,
+        "Folium": 0,
+        "Plotly": 0,
+        "Seaborn": 0,
+        "Matplotlib": 0,
+        "Azure AI Foundry": 0,
+        "Natural Language Processing (NLP)": 0,
+        "Computer Vision": 0,
+        "Responsible AI": 0,
+        "Generative AI": 0,
+        "Django": 0,
+        "Digital Electronics": 0,
+        "Operating Systems": 0,
+        "Microsoft Azure Machine Learning": 0,
+        "Microsoft Power BI": 0,
+        "Software Development Life Cycle (SDLC)": 0,
+        "Software Development": 0,
+        "Applied Machine Learning": 0,
+        "Unsupervised Learning": 0,
+        "Recommender Systems": 0,
+        "Reinforcement Learning": 0,
+        "API": 0,
+        "REST APIs": 0,
+        "API Testing": 0,
+        "Postman API": 0,
+        "Postman": 0,
+        "REST API": 0,
+        "Advance Machine Learning Algorithms": 0,
+        "Artificial Neural Networks": 0,
+        "Machine learning optimisation": 0,
+        "Random Forest": 0,
+        "Supervised Learning": 0,
+        "Git": 0,
+        "GitHub": 1,
+        "Version Control": 0,
+        "Data Science": 0,
+        "Machine Learning": 0,
+        "Artificial Intelligence (AI)": 1,
+        "Internet of Things (IoT)": 1,
+        "Entrepreneurship": 1,
+        "Design": 1,
+        "Public Speaking": 2,
+        "Public Relations": 0,
+        "Event Management": 1,
+        "Microsoft Azure": 1,
+        "Python (Programming Language)": 1,
+        "C (Programming Language)": 1,
+        "MySQL": 1,
+        "Database Management System (DBMS)": 1,
+        "Data Engineering": 0,
+        "Engineering Data Management": 0,
+        "Design Thinking": 0,
+        "Cloud Security": 0,
+        "Cloud Computing": 0,
+        "Cloud Applications": 1,
+        "Cloud Computing IaaS": 0,
+        "Cloud": 0,
+        "Cloud Storage": 1,
+        "Communication": 1,
+        "Object-Oriented Programming (OOP)": 0,
+        "Oops python": 0
+    },
+    "experience_count": 3,
+    "certifications_count": 12,
+    "recommendations": {
+        "received": 0,
+        "given": 0
+    }
+}
