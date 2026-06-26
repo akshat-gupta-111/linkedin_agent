@@ -46,6 +46,12 @@
         },
         {
             "timestamp_text": "1mo",
+            "likes": 104,
+            "comments": 3,
+            "reposts": 1
+        },
+        {
+            "timestamp_text": "1mo",
             "likes": 95,
             "comments": 1,
             "reposts": 0
@@ -192,12 +198,6 @@
             "timestamp_text": "9mo",
             "likes": 29,
             "comments": 3,
-            "reposts": 0
-        },
-        {
-            "timestamp_text": "9mo",
-            "likes": 61,
-            "comments": 13,
             "reposts": 0
         },
         {

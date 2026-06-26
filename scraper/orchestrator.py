@@ -1,8 +1,8 @@
 import asyncio
 import json
 from playwright.async_api import async_playwright
-from browser_manager import LinkedInBrowserManager
-from extractors import LinkedInExtractors
+from scraper.browser_manager import LinkedInBrowserManager
+from scraper.extractors import LinkedInExtractors
 
 class LinkedInScraperSupervisor:
     """

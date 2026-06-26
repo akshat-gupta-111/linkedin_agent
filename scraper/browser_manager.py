@@ -1,9 +1,10 @@
 import json
 import random
 import asyncio
+from pathlib import Path
 from typing import Optional
 from playwright.async_api import async_playwright, BrowserContext, Page, Playwright
-
+import re
 class LinkedInBrowserManager:
     """
     Handles stealth browser initialization, cookie injection, and human-like navigation 
@@ -64,47 +65,84 @@ class LinkedInBrowserManager:
 
     async def smart_scroll(self, page: Page, max_scrolls: int = 15, wait_time: float = 4.0):
         """
-        Intelligently scrolls, utilizing a 'Stubborn Retry' loop to wait out 
-        slow network requests from LinkedIn's servers.
+        Universal Element-Aware Scroll: Uses native keyboard interactions and 
+        combines DOM element counting with Regex text-parsing to verify lazy-loading.
         """
-        print(f"[*] Initiating smart scroll (waiting {wait_time}s between chunks)...")
-        previous_height = await page.evaluate("document.body.scrollHeight")
+        print(f"[*] Initiating Element-Aware Smart Scroll...")
         
+        previous_item_count = 0
         empty_scrolls = 0
-        max_empty_scrolls = 3 # Will wait out 3 consecutive failures
+        max_empty_scrolls = 2 
 
         for i in range(max_scrolls):
-            await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            try:
+                # Safely focus the page without accidentally clicking hyperlinks.
+                await page.focus("body")
+                await page.mouse.click(10, 300) # Safe click in the top-left margin
+            except Exception:
+                pass
+            
+            # Simulate a human aggressively hitting the 'End' key
+            await page.keyboard.press("End")
+            await asyncio.sleep(1.0)
+            
+            # Jiggle the scroll to trigger stubborn event listeners
+            await page.keyboard.press("PageUp")
+            await asyncio.sleep(0.5)
+            await page.keyboard.press("End")
+
+            # Wait for the LinkedIn servers to return the data chunk
             await asyncio.sleep(wait_time)
+
+            # --- THE HYBRID COUNTER LOGIC ---
             
-            new_height = await page.evaluate("document.body.scrollHeight")
+            # 1. Count standard UI elements (Works perfectly for Posts and Skills)
+            ui_count = await page.locator(
+                "main section ul > li, " # The brute-force catch-all for lists
+                "div[data-urn^='urn:li:activity:'], " # Catches posts
+                "div[componentkey^='com.linkedin.sdui.profile.skill']" # Catches skills
+            ).count()
+
+            # 2. Extract raw text for Regex parsing (Bypasses CSS obfuscation for Exp/Certs)
+            main_text = ""
+            try:
+                main_text = await page.locator("main").first.inner_text()
+            except Exception:
+                pass
+                
+            # Regex for Experience dates (e.g., "Jan 2020 - Present")
+            exp_matches = len(re.findall(r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}\s*[-–]\s*(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec\s+\d{4}|Present)', main_text, re.IGNORECASE))
             
-            if new_height == previous_height:
+            # Regex for Certifications (e.g., "Issued May 2026")
+            cert_matches = len(re.findall(r'Issued\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)?\s*\d{4}', main_text, re.IGNORECASE))
+
+            # The current count is whichever metric found the most items on the screen
+            current_item_count = max(ui_count, exp_matches, cert_matches)
+            
+            # --------------------------------
+            
+            if current_item_count == previous_item_count:
                 empty_scrolls += 1
-                print(f"[*] Chunk delayed. Stubborn wait {empty_scrolls}/{max_empty_scrolls}...")
-                
-                # Jiggle the scroll to force event listeners
-                await page.evaluate("window.scrollBy(0, -500)")
-                await asyncio.sleep(1.0)
-                await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                
-                # Add an extra penalty wait for slow servers
-                await asyncio.sleep(wait_time + 2.0) 
+                print(f"[*] No new items detected. Stubborn wait {empty_scrolls}/{max_empty_scrolls}...")
                 
                 if empty_scrolls >= max_empty_scrolls:
-                    print(f"[*] Reached absolute bottom after {i+1} total scrolls.")
+                    print(f"[*] Reached absolute bottom. Total items loaded: {current_item_count}")
                     break
             else:
-                empty_scrolls = 0 # Reset the counter if we got new data!
-                previous_height = new_height
+                empty_scrolls = 0
+                previous_item_count = current_item_count
+                print(f"[*] Chunk loaded successfully. Total items visible: {current_item_count}")
 
                 
-    async def inject_cookies(self, context: BrowserContext, cookie_filepath: str = "linkedin_cookies.json") -> bool:
+    async def inject_cookies(self, context: BrowserContext, cookie_filepath: str | None = None) -> bool:
         """
         Loads exported session cookies to bypass the login wall.
         Sanitizes the cookie dictionary to match Playwright's strict schema.
         """
         try:
+            if cookie_filepath is None:
+                cookie_filepath = str(Path(__file__).resolve().parents[1] / "linkedin_cookies.json")
+
             with open(cookie_filepath, 'r') as file:
                 raw_cookies = json.load(file)
             
